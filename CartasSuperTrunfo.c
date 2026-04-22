@@ -2,60 +2,55 @@
 
 int main() {
     // --- DADOS DA CARTA 1: BRASIL ---
-    char estado1 = 'A';
     char codigo1[] = "A01";
-    char nomeCidade1[] = "Brasilia";
+    char nome1[] = "Brasilia";
     unsigned long int populacao1 = 2817000;
     float area1 = 5802.0;
-    float pib1 = 265.8; // em bilhões
-    int pontosTuristicos1 = 15;
-
-    // Cálculos Carta 1
+    float pib1 = 265.8; 
+    int pontos1 = 15;
+    
     float densidade1 = (float)populacao1 / area1;
-    float pibPerCapita1 = (pib1 * 1000000000) / populacao1;
+    float pibCapita1 = (pib1 * 1000000000) / populacao1;
+    
+    // Super Poder: Soma de todas as propriedades (Densidade entra invertida)
+    float superPoder1 = (float)populacao1 + area1 + pib1 + (float)pontos1 + pibCapita1 + (1.0f / densidade1);
 
     // --- DADOS DA CARTA 2: JAPÃO ---
-    char estado2 = 'B';
     char codigo2[] = "B02";
-    char nomeCidade2[] = "Toquio";
+    char nome2[] = "Toquio";
     unsigned long int populacao2 = 13960000;
     float area2 = 2194.0;
-    float pib2 = 5100.0; // em bilhões
-    int pontosTuristicos2 = 45;
-
-    // Cálculos Carta 2
+    float pib2 = 5100.0;
+    int pontos2 = 45;
+    
     float densidade2 = (float)populacao2 / area2;
-    float pibPerCapita2 = (pib2 * 1000000000) / populacao2;
+    float pibCapita2 = (pib2 * 1000000000) / populacao2;
+    
+    float superPoder2 = (float)populacao2 + area2 + pib2 + (float)pontos2 + pibCapita2 + (1.0f / densidade2);
 
-    // --- EXIBIÇÃO DOS DADOS ---
+    // --- COMPARAÇÃO DAS CARTAS ---
 
     printf("============================================\n");
-    printf("      SUPER TRUNFO - NÍVEL AVENTUREIRO      \n");
-    printf("============================================\n");
+    printf("       SUPER TRUNFO - NÍVEL MESTRE          \n");
+    printf("        %s vs %s            \n", nome1, nome2);
+    printf("============================================\n\n");
 
-    // Exibição Brasil
-    printf("Carta 1:\n");
-    printf("Estado: %c | Código: %s\n", estado1, codigo1);
-    printf("Cidade: %s\n", nomeCidade1);
-    printf("População: %lu hab\n", populacao1);
-    printf("Área: %.2f km²\n", area1);
-    printf("PIB: %.2f bilhões de reais\n", pib1);
-    printf("Pontos Turísticos: %d\n", pontosTuristicos1);
-    printf("Densidade Populacional: %.2f hab/km²\n", densidade1);
-    printf("PIB per Capita: R$ %.2f\n", pibPerCapita1);
+    printf("RESULTADO DAS COMPARAÇÕES (1 = Carta 1 vence, 0 = Carta 2 vence):\n\n");
+
+    // Comparação de cada atributo usando operadores relacionais
+    printf("População: %d\n", populacao1 > populacao2);
+    printf("Área: %d\n", area1 > area2);
+    printf("PIB: %d\n", pib1 > pib2);
+    printf("Pontos Turísticos: %d\n", pontos1 > pontos2);
+    
+    // Regra Mestre: Na Densidade, o MENOR valor vence!
+    printf("Densidade Populacional: %d\n", densidade1 < densidade2);
+    
+    printf("PIB per Capita: %d\n", pibCapita1 > pibCapita2);
+    printf("Super Poder: %d\n", superPoder1 > superPoder2);
 
     printf("\n--------------------------------------------\n");
-
-    // Exibição Japão
-    printf("Carta 2:\n");
-    printf("Estado: %c | Código: %s\n", estado2, codigo2);
-    printf("Cidade: %s\n", nomeCidade2);
-    printf("População: %lu hab\n", populacao2);
-    printf("Área: %.2f km²\n", area2);
-    printf("PIB: %.2f bilhões de reais\n", pib2);
-    printf("Pontos Turísticos: %d\n", pontosTuristicos2);
-    printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
-    printf("PIB per Capita: R$ %.2f\n", pibPerCapita2);
+    printf("Fim do Duelo!\n");
 
     return 0;
 }
